@@ -1,3 +1,5 @@
+import Home from './pages/home'
+
 import Login from './pages/login'
 
 import Register from './pages/register';
@@ -13,6 +15,9 @@ function App() {
     <Router>
       <div className="wrapper">
         <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route exact path="/login">
             <Login />
           </Route>

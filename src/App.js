@@ -6,7 +6,6 @@ import Register from './pages/register';
 
 import Dashboard from './pages/dashboard';
 
-import { auth } from './pages/firebase-config';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './styles.css'
 

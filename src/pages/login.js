@@ -4,6 +4,7 @@ import { auth } from './firebase-config';
 
 const Login = function() {
 
+  //Checks if user is authenticated and changes route
   if(auth.currentUser) {
     window.location.href='/dashboard'
   }

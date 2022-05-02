@@ -4,14 +4,15 @@ import { auth } from './firebase-config';
 
 const Register = function() {
 
-  if(auth.currentUser) {
-    window.location.href='/dashboard'
-  }
-
   //Hooks to set email, password and user
   const [email, setEmail] = useState('');
   const [pssw, setPssw] = useState('');
   const [user, setUser] = useState({});
+
+  //Checks if user is authenticated and changes route
+  if(auth.currentUser) {
+    window.location.href='/dashboard'
+  }
 
   //Check if user changed and update it
   onAuthStateChanged(auth, (currentUser) => {
@@ -20,11 +21,28 @@ const Register = function() {
       }
   });
 
-  //Register function
-  const register = async () => {
+  //Register user when entering email and password
+  async function register() {
     try {
-      createUserWithEmailAndPassword(auth, email, pssw);
+      await createUserWithEmailAndPassword(auth, email, pssw).then(() => {logData();});
     } catch(error){};
+  };
+
+  //fetch function to post email and password from user
+  const logData = async () => {
+      //fetch request from local API on port 5000
+      fetch("http://127.0.0.1:5000/post", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": "application/json"//Header to specify JSON format
+        },
+        body: JSON.stringify({
+        usuario: auth.currentUser.email,//get user email from currentUser
+        password: auth.currentUser.uid,//get UID from currentUser
+        fecha: 'test'
+      })
+      });
   };
 
   return (

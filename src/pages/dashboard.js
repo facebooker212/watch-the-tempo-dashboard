@@ -28,27 +28,27 @@ const Dashboard = function() {
 
   //fetch function to retrieve data from API on port 5000
   const fetchData = async () => {
-      fetch("http://127.0.0.1:5000/test/*/jugadores").then((response) => response.text()).then((data) => {
-        //Once we get the data split it so we can process it
-        var rawData = data.slice(1, -1);
-        rawData = rawData.split("},");
+    fetch("http://watchthetempo:5000/test/*/jugadores").then((response) => response.text()).then((data) => {
+    //Once we get the data split it so we can process it
+    var rawData = data.slice(1, -1);
+    rawData = rawData.split("},");
 
-        //Stores the data on a list
-        var prodData = [];
+    //Stores the data on a list
+    var prodData = [];
 
-        //Map the data and reassemble it into proper format
-        rawData.map((data) => {
-          if(data[data.length-1] === "}") {
-            prodData.push(JSON.parse(data));
-          }
-          else {
-            prodData.push(JSON.parse(data+"}"));
-          }
-        });
-        //Set final data on hook
-        setQuery(prodData);
-      });
-    };
+    //Map the data and reassemble it into proper format
+    rawData.map((data) => {
+      if(data[data.length-1] === "}") {
+        prodData.push(JSON.parse(data));
+      }
+      else {
+        prodData.push(JSON.parse(data+"}"));
+      }
+    });
+    //Set final data on hook
+    setQuery(prodData);
+  });
+  };
 
   //Defines the format for the table depending on data
   const columns = [

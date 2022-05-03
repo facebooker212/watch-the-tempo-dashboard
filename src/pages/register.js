@@ -31,7 +31,7 @@ const Register = function() {
   //fetch function to post email and password from user
   const logData = async () => {
       //fetch request from local API on port 5000
-      fetch("http://127.0.0.1:5000/post", {
+      fetch("http://watchthetempo.games:5000/post", {
         method: "POST",
         headers: {
           'Accept': 'application/json',

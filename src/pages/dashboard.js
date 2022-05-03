@@ -28,7 +28,7 @@ const Dashboard = function() {
 
   //fetch function to retrieve data from API on port 5000
   const fetchData = async () => {
-    fetch("http://watchthetempo:5000/test/*/jugadores").then((response) => response.text()).then((data) => {
+    fetch("http://watchthetempo.games:5000/test/*/jugadores").then((response) => response.text()).then((data) => {
     //Once we get the data split it so we can process it
     var rawData = data.slice(1, -1);
     rawData = rawData.split("},");

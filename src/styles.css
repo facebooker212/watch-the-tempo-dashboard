@@ -16,3 +16,11 @@ h1 {
   color: white;
   text-align: center;
 }
+
+.inner-div {
+  padding: 30px;
+  margin: auto;
+  align-content: center;
+  width: 60%;
+  height: 60%;
+}

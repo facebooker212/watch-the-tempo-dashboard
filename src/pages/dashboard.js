@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase-config';
 import DataTable from 'react-data-table-component';
+import { PieChart } from 'react-minimal-pie-chart';
 
 const Dashboard = function() {
 
@@ -28,7 +29,8 @@ const Dashboard = function() {
 
   //fetch function to retrieve data from API on port 5000
   const fetchData = async () => {
-    fetch("http://watchthetempo.games:5000/test/*/jugadores").then((response) => response.text()).then((data) => {
+    //fetch("http://127.0.0.1:5000/test/*/jugadores").then((response) => response.text()).then((data) => {
+    fetch("https://64.227.109.201:8443/test").then((response) => response.text()).then((data) => {
     //Once we get the data split it so we can process it
     var rawData = data.slice(1, -1);
     rawData = rawData.split("},");
@@ -53,17 +55,13 @@ const Dashboard = function() {
   //Defines the format for the table depending on data
   const columns = [
       {
-          name: 'Usuario',
-          selector: 'usuario'
+          name: 'Username',
+          selector: 'username'
       },
       {
           name: 'Password',
           selector: 'password'
-      },
-      {
-          name: 'Fecha',
-          selector: 'fecha'
-      },
+      }
   ];
 
   return (
@@ -72,11 +70,19 @@ const Dashboard = function() {
           <span>Email: {user?.email}</span><br/><br/>
           <span>UID: {user?.uid}</span><br/><br/>
           <button onClick={logout}>Logout User</button>
-          <div>
+          <div className="inner-div">
             {query !== undefined &&
               <DataTable columns={columns} data={query}/>
             }
           </div>
+	  <div className="inner-div">
+	    <PieChart
+  	    data={[
+    	    { title: 'Kai', value: 10, color: '#0000ff'},
+    	    { title: 'Melody', value: 15, color: '#ff0000'},
+  	    ]}
+	    />
+	  </div>
       </div>
   );
 };

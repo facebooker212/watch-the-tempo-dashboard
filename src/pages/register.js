@@ -31,26 +31,26 @@ const Register = function() {
   //fetch function to post email and password from user
   const logData = async () => {
       //fetch request from local API on port 5000
-      fetch("http://watchthetempo.games:5000/post", {
+      //fetch("http://127.0.0.1:5000/post", {
+      fetch("https://64.227.109.201:8443/post", {
         method: "POST",
         headers: {
           'Accept': 'application/json',
           "Content-Type": "application/json"//Header to specify JSON format
         },
         body: JSON.stringify({
-        usuario: auth.currentUser.email,//get user email from currentUser
-        password: auth.currentUser.uid,//get UID from currentUser
-        fecha: 'test'
-      })
+	username: auth.currentUser.email,//get user email from currentUser
+        password: auth.currentUser.uid//get UID from currentUser
+      	})
       });
   };
 
   return (
     <div>
-      <input placeholder="Ingresa tu e-mail" onChange={(event) => {
+      <input placeholder="Enter e-mail" onChange={(event) => {
         setEmail(event.target.value);
       }}></input><br/><br/>
-      <input type="password" placeholder="Ingresa una password" onChange={(event) => {
+      <input type="password" placeholder="Enter password" onChange={(event) => {
         setPssw(event.target.value);
       }}></input><br/><br/>
       <button onClick={register}>Register User</button>

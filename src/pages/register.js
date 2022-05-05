@@ -32,7 +32,7 @@ const Register = function() {
   const logData = async () => {
       //fetch request from local API on port 5000
       //fetch("http://127.0.0.1:5000/post", {
-      fetch("https://64.227.109.201:8443/post", {
+      fetch("http://snowker.xyz:8443/post", {
         method: "POST",
         headers: {
           'Accept': 'application/json',

@@ -30,7 +30,7 @@ const Dashboard = function() {
   //fetch function to retrieve data from API on port 5000
   const fetchData = async () => {
     //fetch("http://127.0.0.1:5000/test/*/jugadores").then((response) => response.text()).then((data) => {
-    fetch("https://64.227.109.201:8443/test").then((response) => response.text()).then((data) => {
+    fetch("https://snowker.xyz:8443/test").then((response) => response.text()).then((data) => {
     //Once we get the data split it so we can process it
     var rawData = data.slice(1, -1);
     rawData = rawData.split("},");

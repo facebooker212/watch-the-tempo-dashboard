@@ -55,12 +55,32 @@ const Dashboard = function() {
   //Defines the format for the table depending on data
   const columns = [
       {
-          name: 'Username',
-          selector: 'username'
+          name: 'Player_ID',
+          selector: 'ID_Jugador'
       },
       {
-          name: 'Password',
-          selector: 'password'
+          name: 'Puntuacion',
+          selector: 'Puntuacion'
+      },
+      {
+          name: 'Personaje',
+          selector: 'ID_Personaje'
+      },
+      {
+          name: 'Instrument',
+          selector: 'ID_Instrumento'
+      },
+      {
+          name: 'Level',
+          selector: 'ID_Nivel'
+      },
+      {
+          name: 'Time',
+          selector: 'Tiempo'
+      },
+      {
+          name: 'Game #',
+          selector: 'ID_Corrida'
       }
   ];
 
